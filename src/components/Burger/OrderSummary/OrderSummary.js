@@ -3,10 +3,10 @@ import Aux from '../../../hoc/Auxilaary/Auxilaary';
 import Button from '../../UI/Button/Button';
 //import classes from './OrderSummary.module.css';
 class OrderSummary extends Component {
-    componentWillUpdate() {
-        console.log('[OrderSummary] Will Update');
+    UNSAFE_componentWillUpdate() {
     }
     render() {
+
         const ingredientSummary = Object.keys(this.props.ingredients)
             .map(igKey => {
                 return (<li key={igKey}>
@@ -14,6 +14,7 @@ class OrderSummary extends Component {
                 </li>);
             });
         return (
+
             <Aux>
                 <h3>Your Order</h3>
                 <p>A delicious burgerwith following ingredients:
