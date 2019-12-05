@@ -9,17 +9,23 @@ const sideDrawer = (props) => {
     if (props.open) {
         attachedClasses = [classes.SideDrawer, classes.Open];
     }
+    console.log(props);
     return (
         <Aux>
             <Backdrop show={props.open} clicked={props.closed} />
-            <div className={attachedClasses.join(' ')}>
-                <div className={classes.Logo}>
-                    <Logo />
+            {props.open &&
+
+                <div className={attachedClasses.join(' ')}>
+                    <i onClick={props.closed} className="float-right fa fa-times fa-2x" />
+
+                    <div className={classes.Logo}>
+                        <Logo />
+                    </div>
+                    <nav>
+                        <NavigationItems />
+                    </nav>
                 </div>
-                <nav>
-                    <NavigationItems />
-                </nav>
-            </div>
+            }
         </Aux>
     );
 };
