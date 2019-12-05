@@ -1,18 +1,28 @@
 import React from 'react';
 import classes from './Input.module.css';
+
 const input = (props) => {
+
     let inputElement = null;
     const inputClasses = [classes.InputElement];
     if (props.invalid && props.shouldValidate) {
         inputClasses.push(classes.Invalid && props.touched);
+        if (props.touched) {
+            inputClasses.push('form-control is-valid');
+
+        }
     }
     switch (props.elementType) {
         case ('input'):
-            inputElement = <input
-                className={inputClasses.join(' ')}
-                {...props.elementConfig}
-                value={props.value}
-                onChange={props.changed} />;
+            inputElement =
+                <div><input
+                    className={inputClasses.join(' ')}
+                    {...props.elementConfig}
+                    value={props.value}
+                    onChange={props.changed} />
+                    {props.touched && props.invalid ? <p className={classes.Red} > Please enter correctly</p> : null
+                    }
+                </div >
             break;
         case ('textarea'):
             inputElement = <textarea
@@ -46,6 +56,9 @@ const input = (props) => {
             <label className={classes.Label}>{props.label}</label>
             {inputElement}
         </div>
+
     );
+
+
 };
 export default input;
