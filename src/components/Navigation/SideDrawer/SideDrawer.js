@@ -9,17 +9,29 @@ const sideDrawer = (props) => {
     if (props.open) {
         attachedClasses = [classes.SideDrawer, classes.Open];
     }
+
+
     return (
         <Aux>
             <Backdrop show={props.open} clicked={props.closed} />
-            <div className={attachedClasses.join(' ')}>
-                <div className={classes.Logo}>
-                    <Logo />
+            {props.open &&
+
+                <div className={attachedClasses.join(' ')} onClick={props.closed}>
+                    <div onClick={props.close} className="float-right">
+                        <i className="float-right fa fa-times fa-2x" />
+                    </div>
+                    {/* <button onClick={props.open} type="button" className="close" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button> */}
+
+                    <div className={classes.Logo}>
+                        <Logo />
+                    </div>
+                    <nav>
+                        <NavigationItems isAuthenticated={props.isAuth} />
+                    </nav>
                 </div>
-                <nav>
-                    <NavigationItems />
-                </nav>
-            </div>
+            }
         </Aux>
     );
 };
