@@ -25,6 +25,7 @@ class Layout extends Component {
     render() {
         //localStorage.setItem('mykey', 1);
         return (
+            // console.log(this.state.token),
             <Aux>
                 <Toolbar
                     isAuth={this.props.isAuthenticated}

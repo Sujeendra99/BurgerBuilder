@@ -20,14 +20,14 @@ const purchaseBurgerSuccess = (state, action) => {
         orders: state.orders.concat(newOrder)
     });
 };
-const purchaseBurgerFail = (state, action) => {
+const purchaseBurgerFail = (state, actions = null) => {
     return updateObject(state, { loading: false });
 };
 const fetchOrdersStart = (state, action) => {
     return updateObject(state, { loading: true });
 };
 const fetchOrdersSuccess = (state, action) => {
-    return updateObject(state, { orders: action.orders, loading: false });
+    return updateObject(state, { loading: false, orders: action.orders });
 };
 const fetchOrdersFail = (state, action) => {
     return updateObject(state, { loading: false });

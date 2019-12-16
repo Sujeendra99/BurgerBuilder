@@ -11,6 +11,7 @@
 }
 .InputElement{
 outline:none;
+background:disabled;
 border:1px solid #ccc;
 background-color:white;
 font:inherit;
@@ -22,6 +23,7 @@ box-sizing:border-box;
 .InputElement:focus{
     outline:none;
     background-color:#ccc;
+    background:disabled;
 
 }
 .Invalid

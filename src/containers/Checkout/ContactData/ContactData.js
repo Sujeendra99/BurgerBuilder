@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import withErrorHandler from '../../../hoc/withErrorHandler/withErrorHandler';
 import * as actions from '../../../store/actions/index';
 import { updateObject, checkValidity } from '../../../shared/utility';
+
 class ContactData extends Component {
     state = {
         orderForm: {
@@ -44,7 +45,9 @@ class ContactData extends Component {
                 elementType: 'input',
                 elementConfig:
                 {
-                    type: 'text',
+                    type: 'number',
+                    // min: 0,
+                    // max: 9,
                     placeholder: 'Zipcode'
                 },
                 value: '',
@@ -130,6 +133,14 @@ class ContactData extends Component {
         }
         this.setState({ orderForm: updatedOrderForm, formIsValid: formIsValid });
     }
+
+    componentDidMount() {
+        const email = localStorage.getItem('email');
+        let updatedEmail = { ...this.state.orderForm };
+        updatedEmail.email = { ...updatedEmail.email, value: email }
+        this.setState({ orderForm: updatedEmail });
+        console.log(this.state)
+    }
     render() {
         const formElementsArray = [];
         for (let key in this.state.orderForm) {
@@ -144,6 +155,7 @@ class ContactData extends Component {
                 {formElementsArray.map(formElement =>
                     (
                         <Input
+
                             key={formElement.id}
                             elementType={formElement.config.elementType}
                             elementConfig={formElement.config.elementConfig}
@@ -160,6 +172,7 @@ class ContactData extends Component {
         if (this.props.loading) {
             form = <Spinner />;
         }
+        console.log(this.props);
         return (
             <div className={classes.ContactData}>
                 <h4>Enter your Contact Data</h4>

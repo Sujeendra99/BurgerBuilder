@@ -104,6 +104,7 @@ class Auth extends Component {
         let authRedirect = null;
         if (this.props.isAuthenticated) {
             authRedirect = <Redirect to={this.props.authRedirectPath} />
+            //debugger
         }
         return (
             <div className={classes.Auth}>
@@ -118,6 +119,7 @@ class Auth extends Component {
                     btnType="Danger">
                     SWITCH TO {this.state.isSignup ? 'SIGNIN' : 'SIGNUP'}</Button>
             </div>
+
         );
     }
 }

@@ -5,12 +5,20 @@ import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import Order from '../../components/Order/Order';
 import * as actions from '../../store/actions/index';
 import Spinner from '../../components/UI/Spinner/Spinner';
+//import { Redirect } from 'react-router-dom';
 class Orders extends Component {
 
     componentDidMount() {
         this.props.onFetchOrders(this.props.token, this.props.userId);
     }
     render() {
+        // if (!this.props.token) {
+
+        //     return <Redirect to={{
+        //         pathName: '/Auth',
+        //     }} />
+
+
         let orders = <Spinner />;
         if (!this.props.loading) {
             orders = this.props.orders.map(order =>
@@ -22,16 +30,19 @@ class Orders extends Component {
                 ))
         };
 
-
+        console.log(orders);
 
         return (
             <div>
-                {orders}
+                {orders};
+
             </div>
         );
     }
+
 }
 const mapStateToProps = state => {
+
     return {
         orders: state.order.orders,
         loading: state.order.loading,

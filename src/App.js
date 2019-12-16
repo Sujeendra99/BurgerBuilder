@@ -28,6 +28,7 @@ class App extends Component {
   //     this.setState({ show: false });
   //   }, 5000);
   // }
+
   render() {
     let routes = (
       <Switch>
@@ -48,6 +49,8 @@ class App extends Component {
         </Switch>);
     }
     return (
+      //console.log(asyncAuth, asyncCheckout, asyncOrders),
+
       <div>
         <Layout>
           {routes}
