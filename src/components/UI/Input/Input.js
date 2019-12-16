@@ -20,7 +20,7 @@ const input = (props) => {
                     {...props.elementConfig}
                     value={props.value}
                     onChange={props.changed} />
-                    {props.touched && props.invalid ? <p className={classes.Red} > Please enter correctly</p> : null
+                    {props.touched && props.invalid && !props.clicked ? <p className={classes.Red} > Please enter correctly</p> : null
                     }
                 </div >
             break;
@@ -51,6 +51,7 @@ const input = (props) => {
                 value={props.value}
                 onChange={props.changed} />;
     }
+    //console.log(props.clicked);
     return (
         <div className={classes.Input}>
             <label className={classes.Label}>{props.label}</label>
